@@ -1,0 +1,23 @@
+{
+  "name": "reactandfluxapp",
+  "version": "1.0.0",
+  "description": "Building an app with React and Flux, ES5, following a Pluralsight course:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrikmathiesen/reactAndFluxApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henrikmathiesen/reactAndFluxApp/issues"
+  },
+  "homepage": "https://github.com/henrikmathiesen/reactAndFluxApp#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.2.0"
+  }
+}

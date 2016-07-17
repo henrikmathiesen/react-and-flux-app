@@ -1,9 +1,21 @@
 var gulp = require('gulp');
+
 var connect = require('gulp-connect');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var stripDebug = require('gulp-strip-debug');
+
 var argv = require('yargs').argv;
+var gulpif = require('gulp-if');
+
+var less = require('gulp-less');
+var autoprefix = require('gulp-autoprefixer');
+var minifyCss = require('gulp-minify-css');
+var sourceMaps = require('gulp-sourcemaps');
+
+
 
 var isProduction = (argv.prod) ? (true) : (false); // gulp --prod
 
@@ -12,8 +24,10 @@ var config = {
     devBaseUrl: 'http://localhost',
     paths: {
         html: './app/*.html',
-        mainJS: './app/main.js',
-        js: './app/**/*.js',
+        mainJS: './app/js/app.js',
+        js: './app/js/**/*.js',
+        mainLess: './app/less/app.less',
+        less: './app/less/**/*.less',
         bld: './bld'
     }
 };
@@ -31,7 +45,23 @@ gulp.task('js', function () {
         .transform(reactify)
         .bundle()
         .on('error', console.error.bind(console))
-        .pipe(source('bundle.js'))
+        .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(gulpif(isProduction, stripDebug()))
+        .pipe(gulp.dest(config.paths.bld));
+});
+
+gulp.task('less', function () {
+    return gulp
+        .src(config.paths.mainLess)
+        .pipe(gulpif(!isProduction, sourceMaps.init()))
+        
+        .pipe(less())
+        .pipe(autoprefix({ browsers: ['last 3 versions'] }))
+        
+        .pipe(gulpif(isProduction, minifyCss()))
+        
+        .pipe(gulpif(!isProduction, sourceMaps.write()))
         .pipe(gulp.dest(config.paths.bld));
 });
 
@@ -43,6 +73,7 @@ gulp.task('html', function () {
 gulp.task('watch', function () {
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);
+    gulp.watch(config.paths.less, ['less']);
 });
 
-gulp.task('default', ['html', 'js', 'connect', 'watch']);
+gulp.task('default', ['html', 'js', 'less', 'connect', 'watch']);

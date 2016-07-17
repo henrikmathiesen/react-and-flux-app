@@ -15,8 +15,6 @@ var autoprefix = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 var sourceMaps = require('gulp-sourcemaps');
 
-
-
 var isProduction = (argv.prod) ? (true) : (false); // gulp --prod
 
 var config = {
@@ -33,6 +31,8 @@ var config = {
 };
 
 gulp.task('connect', function () {
+    if(isProduction) { return; }
+    
     connect.server({
         root: ['bld'],
         port: config.port,
@@ -71,6 +71,8 @@ gulp.task('html', function () {
 });
 
 gulp.task('watch', function () {
+    if(isProduction) { return; }
+
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);
     gulp.watch(config.paths.less, ['less']);

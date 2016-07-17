@@ -18,7 +18,7 @@ var config = {
     }
 };
 
-gulp.task('connect', function(){
+gulp.task('connect', function () {
     connect.server({
         root: ['bld'],
         port: config.port,
@@ -26,7 +26,7 @@ gulp.task('connect', function(){
     })
 });
 
-gulp.task('js', function(){
+gulp.task('js', function () {
     browserify(config.paths.mainJS, { debug: !isProduction })
         .transform(reactify)
         .bundle()
@@ -35,12 +35,12 @@ gulp.task('js', function(){
         .pipe(gulp.dest(config.paths.bld));
 });
 
-gulp.task('html', function(){
+gulp.task('html', function () {
     return gulp.src(config.paths.html)
         .pipe(gulp.dest(config.paths.bld))
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', function () {
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);
 });

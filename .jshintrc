@@ -1,0 +1,12 @@
+{
+  "undef": true,
+  "unused": true,
+  "sub": true,
+  "predef": [ "console"],
+  "browserify": true,
+  "jquery": true,
+  "globals": {
+      "jQuery": true,
+      "$": true
+  }
+}

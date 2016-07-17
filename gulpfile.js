@@ -5,7 +5,10 @@ var browserify = require('browserify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+
 var stripDebug = require('gulp-strip-debug');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
 
 var argv = require('yargs').argv;
 var gulpif = require('gulp-if');
@@ -31,8 +34,8 @@ var config = {
 };
 
 gulp.task('connect', function () {
-    if(isProduction) { return; }
-    
+    if (isProduction) { return; }
+
     connect.server({
         root: ['bld'],
         port: config.port,
@@ -40,8 +43,16 @@ gulp.task('connect', function () {
     })
 });
 
-gulp.task('js', function () {
-    browserify(config.paths.mainJS, { debug: !isProduction })
+gulp.task('js-hint', function () {
+    return gulp
+        .src(config.paths.js)
+        .pipe(jshint())
+        .pipe(jshint.reporter(stylish))
+        .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('js', ['js-hint'], function () {
+    return browserify(config.paths.mainJS, { debug: !isProduction })
         .transform(reactify)
         .bundle()
         .on('error', console.error.bind(console))
@@ -55,12 +66,12 @@ gulp.task('less', function () {
     return gulp
         .src(config.paths.mainLess)
         .pipe(gulpif(!isProduction, sourceMaps.init()))
-        
+
         .pipe(less())
         .pipe(autoprefix({ browsers: ['last 3 versions'] }))
-        
+
         .pipe(gulpif(isProduction, minifyCss()))
-        
+
         .pipe(gulpif(!isProduction, sourceMaps.write()))
         .pipe(gulp.dest(config.paths.bld));
 });
@@ -71,7 +82,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('watch', function () {
-    if(isProduction) { return; }
+    if (isProduction) { return; }
 
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);

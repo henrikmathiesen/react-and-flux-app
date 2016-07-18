@@ -51,7 +51,7 @@ gulp.task('es-lint', function () {
 });
 
 gulp.task('js', ['es-lint'], function () {
-    return browserify(config.paths.mainJS, { debug: !isProduction }) // this will not set environment flag for react, check into that ...
+    return browserify(config.paths.mainJS, { debug: !isProduction }) // this will not set environment flag for react, check into that ... It seams it runs in prod mode since its not warning for props that do not match propTypeds.
         .transform(reactify)
         .bundle()
         .on('error', console.error.bind(console))

@@ -36,6 +36,8 @@ var Info = React.createClass({
                     Nest component, work with small components. Regard the top level components as "controller views"; they interact with Flux stores and controll data flow for child components by settings props on them.
                     Do not do this work in the nested components.
                 </p>
+                <h3>Prop validation</h3>
+                <p>In development mode we can validate what props a component expects, like an interface. See examples. <a href="https://facebook.github.io/react/docs/reusable-components.html">Read about it here</a></p>
             </div>
         );
     }

@@ -17,13 +17,14 @@ var autoprefix = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 var sourceMaps = require('gulp-sourcemaps');
 
-var isProduction = (argv.prod) ? (true) : (false); // gulp --prod
+var isProduction = (argv.prod) ? (true) : (false);  // gulp --prod
 
 var config = {
     port: 1337,
     devBaseUrl: 'http://localhost',
     paths: {
         html: './app/*.html',
+        imagesFavIcon: './app/img/favicon.ico',
         mainJS: './app/js/app.js',
         js: './app/js/**/*.js',
         mainLess: './app/less/app.less',
@@ -80,6 +81,14 @@ gulp.task('html', function () {
         .pipe(gulp.dest(config.paths.bld))
 });
 
+gulp.task('images', function () {
+    // Dont need to return since no other task is dependant of this task, the same goes for others ...
+    gulp.src(config.paths.imagesFavIcon)
+        .pipe(gulp.dest(config.paths.bld))
+});
+
+
+
 gulp.task('watch', function () {
     if (isProduction) { return; }
 
@@ -88,4 +97,4 @@ gulp.task('watch', function () {
     gulp.watch(config.paths.less, ['less']);
 });
 
-gulp.task('default', ['html', 'js', 'less', 'connect', 'watch']);
+gulp.task('default', ['html', 'js', 'less', 'images', 'connect', 'watch']);

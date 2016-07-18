@@ -18,7 +18,7 @@ var Authors = React.createClass({
         return (
             <div>
                 <h1>Authors</h1>
-                <AuthorList authors={ { id: 1, name: "kalle" } } />
+                <AuthorList authors={this.state.authors} />
             </div>
         );
     }

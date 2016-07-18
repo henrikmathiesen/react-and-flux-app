@@ -7,6 +7,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
 var stripDebug = require('gulp-strip-debug');
+var uglifyJs = require('gulp-uglify');
 var eslint = require('gulp-eslint');
 
 var argv = require('yargs').argv;
@@ -34,8 +35,6 @@ var config = {
 };
 
 gulp.task('connect', function () {
-    if (isProduction) { return; }
-
     connect.server({
         root: ['bld'],
         port: config.port,
@@ -58,7 +57,9 @@ gulp.task('js', ['es-lint'], function () {
         .on('error', console.error.bind(console))
         .pipe(source('app.js'))
         .pipe(buffer())
+        
         .pipe(gulpif(isProduction, stripDebug()))
+        .pipe(gulpif(isProduction, uglifyJs()))
         .pipe(gulp.dest(config.paths.bld));
 });
 
@@ -90,11 +91,10 @@ gulp.task('images', function () {
 
 
 gulp.task('watch', function () {
-    if (isProduction) { return; }
-
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);
     gulp.watch(config.paths.less, ['less']);
 });
 
-gulp.task('default', ['html', 'js', 'less', 'images', 'connect', 'watch']);
+gulp.task('build', ['html', 'js', 'less', 'images']);
+gulp.task('default', ['build', 'connect', 'watch']);

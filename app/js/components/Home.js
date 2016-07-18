@@ -6,7 +6,7 @@ var Home = React.createClass({
             <div className="jumbotron">
                 <h1>Pluralsight Administration</h1>
                 <p>
-                    We are using React, React Router and Flux for ultra responsive web apps.
+                    We are using React, React Router and Flux for ultra responsive web apps
                 </p>
             </div>
         );

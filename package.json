@@ -46,7 +46,7 @@
       "browser": true,
       "node": true,
       "jquery": true,
-      "amd": true
+      "commonjs": true
     },
     "parserOptions": {
       "sourceType": "module",

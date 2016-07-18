@@ -31,6 +31,11 @@ var Info = React.createClass({
                 <p>
                     Add a key to dynamic children, else React can not keep track of them. <code>&lt;tr key={'{ author.id }'}&gt;</code>
                 </p>
+                <h3>Architecture</h3>
+                <p>
+                    Nest component, work with small components. Regard the top level components as "controller views"; they interact with Flux stores and controll data flow for child components by settings props on them.
+                    Do not do this work in the nested components.
+                </p>
             </div>
         );
     }

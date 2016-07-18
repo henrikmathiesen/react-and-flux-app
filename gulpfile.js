@@ -7,8 +7,6 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
 var stripDebug = require('gulp-strip-debug');
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
 
 var argv = require('yargs').argv;
 var gulpif = require('gulp-if');
@@ -44,11 +42,7 @@ gulp.task('connect', function () {
 });
 
 gulp.task('js-hint', function () {
-    return gulp
-        .src(config.paths.js)
-        .pipe(jshint())
-        .pipe(jshint.reporter(stylish))
-        .pipe(jshint.reporter('fail'));
+    
 });
 
 gulp.task('js', ['js-hint'], function () {

@@ -1,7 +1,7 @@
 var React = require('react');
 
 var AuthorApi = require('../../../../api/authorApi');
-var AuthorList = require('./AuthorList');
+var AuthorsList = require('./AuthorsList');
 
 var Authors = React.createClass({
     getInitialState: function(){

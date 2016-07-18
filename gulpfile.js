@@ -51,7 +51,7 @@ gulp.task('es-lint', function () {
 });
 
 gulp.task('js', ['es-lint'], function () {
-    return browserify(config.paths.mainJS, { debug: !isProduction })
+    return browserify(config.paths.mainJS, { debug: !isProduction }) // this will not set environment flag for react, check into that ...
         .transform(reactify)
         .bundle()
         .on('error', console.error.bind(console))

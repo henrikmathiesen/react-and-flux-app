@@ -1,10 +1,10 @@
 var React = require('react');
 
-var Header = require('../components/Header');
-var Home = require('./Home');
+var HeaderSimpleRouting = require('../components/HeaderSimpleRouting');
 var About = require('./about/About');
-var Info = require('./info/Info');
 var Authors = require('./authors/Authors');
+var Info = require('./info/Info');
+var Home = require('./Home');
 
 var LayoutSimpleRouting = React.createClass({
     render: function () {
@@ -28,7 +28,7 @@ var LayoutSimpleRouting = React.createClass({
 
         return (
             <div className="container">
-                <Header route={route} />
+                <HeaderSimpleRouting route={route} />
                 <Child />
             </div>
         );

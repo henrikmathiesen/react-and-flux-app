@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Header = React.createClass({
+var HeaderSimpleRouting = React.createClass({
 
     render: function () {
         var activeClasses = {
@@ -26,4 +26,4 @@ var Header = React.createClass({
     }
 });
 
-module.exports = Header;
+module.exports = HeaderSimpleRouting;

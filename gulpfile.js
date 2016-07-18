@@ -7,6 +7,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
 var stripDebug = require('gulp-strip-debug');
+var eslint = require('gulp-eslint');
 
 var argv = require('yargs').argv;
 var gulpif = require('gulp-if');
@@ -41,11 +42,15 @@ gulp.task('connect', function () {
     })
 });
 
-gulp.task('js-hint', function () {
-    
+gulp.task('es-lint', function () {
+    return gulp
+        .src(config.paths.js)
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
-gulp.task('js', ['js-hint'], function () {
+gulp.task('js', ['es-lint'], function () {
     return browserify(config.paths.mainJS, { debug: !isProduction })
         .transform(reactify)
         .bundle()

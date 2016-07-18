@@ -21,8 +21,8 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-connect": "^4.2.0",
+    "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.1",
-    "gulp-jshint": "^2.0.1",
     "gulp-less": "^3.1.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-sourcemaps": "^1.6.0",
@@ -39,5 +39,27 @@
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.5.2"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true,
+      "node": true,
+      "jquery": true,
+      "amd": true
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "globals": {
+      "jQuery": true,
+      "$": true
+    },
+    "rules": {
+      "no-unused-vars": 0
+    }
   }
 }

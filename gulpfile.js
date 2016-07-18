@@ -88,14 +88,12 @@ gulp.task('images', function () {
         .pipe(gulp.dest(config.paths.bld))
 });
 
-
-
-gulp.task('watch', function () {
+gulp.task('watcher', function () {
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);
     gulp.watch(config.paths.less, ['less']);
 });
 
 gulp.task('build', ['html', 'js', 'less', 'images']);
-gulp.task('watch', ['build', 'watch']);
-gulp.task('default', ['build', 'connect', 'watch']);
+gulp.task('watch', ['build', 'watcher']);
+gulp.task('default', ['watch', 'connect']);

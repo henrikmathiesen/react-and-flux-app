@@ -97,4 +97,5 @@ gulp.task('watch', function () {
 });
 
 gulp.task('build', ['html', 'js', 'less', 'images']);
+gulp.task('watch', ['build', 'watch']);
 gulp.task('default', ['build', 'connect', 'watch']);

@@ -1,6 +1,6 @@
 var React = require('react');
 
-var LifeCycleMethodsTable = require('./LifeCycleMethodsTable');
+var LifeCycleMethodsTable = require('../../components/LifeCycleMethodsTable');
 
 var Info = React.createClass({
     render: function(){

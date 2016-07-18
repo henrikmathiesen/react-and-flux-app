@@ -4,6 +4,7 @@ var Header = require('../components/Header');
 var Home = require('./Home');
 var About = require('./about/About');
 var Info = require('./info/Info');
+var Authors = require('./authors/Authors');
 
 var LayoutSimpleRouting = React.createClass({
     render: function () {
@@ -13,6 +14,9 @@ var LayoutSimpleRouting = React.createClass({
         switch (route) {
             case 'about':
                 Child = About;
+                break;
+            case 'authors':
+                Child = Authors;
                 break;
             case 'info':
                 Child = Info;

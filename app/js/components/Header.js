@@ -17,6 +17,7 @@ var Header = React.createClass({
                     <ul className="nav navbar-nav">
                         <li className={this.getIsActiveClass('/', true)}><IndexLink to="/">Home</IndexLink></li>
                         <li className={this.getIsActiveClass('authors', false)}><Link to="authors">Authors</Link></li>
+                        <li className={this.getIsActiveClass('manage-authors', false)}><Link to="manage-authors">Manage Authors</Link></li>
                         <li className={this.getIsActiveClass('about', false)}><Link to="about">About</Link></li>
                         <li className={this.getIsActiveClass('info', false)}><Link to="info">Info</Link></li>
                     </ul>

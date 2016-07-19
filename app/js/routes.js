@@ -11,6 +11,7 @@ var Home = require('./pages/Home');
 var Authors = require('./Pages/authors/Authors');
 var About = require('./Pages/about/About');
 var Info = require('./Pages/info/Info');
+var ManageAuthor = require('./Pages/authors/ManageAuthor');
 var Route404 = require('./Pages/Route404');
 
 var aboutRouteTransition = require('./Pages/about/aboutRouteTransition');
@@ -20,6 +21,7 @@ var routes = (
         <Route path="/" component={Layout}>
             <IndexRoute component={Home}></IndexRoute>
             <Route path="authors" component={Authors}></Route>
+            <Route path="manage-authors" component={ManageAuthor}></Route>
             <Route path="about" component={About} onEnter={aboutRouteTransition.onEnter} onLeave={aboutRouteTransition.onLeave}></Route>
             <Route path="info" component={Info}></Route>
 

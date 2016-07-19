@@ -1,3 +1,5 @@
+var hashHistory = require('react-router').hashHistory;
+
 var aboutRouteTransition = {
     onEnter: function(location, replaceWith){
         // console.log(location);
@@ -6,7 +8,8 @@ var aboutRouteTransition = {
         // }
     },
     onLeave: function(){
-        //console.log("onLeave");
+        //console.log(hashHistory);
+        //hashHistory.goBack();
     }
 }
 

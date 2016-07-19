@@ -3,11 +3,17 @@ var React = require('react');
 var Home = React.createClass({
     render: function(){
         return(
-            <div className="jumbotron">
-                <h1>Pluralsight Administration</h1>
-                <p>
-                    We are using React, React Router and Flux for ultra responsive web apps
-                </p>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="jumbotron">
+                            <h1>Pluralsight Administration</h1>
+                            <p>
+                                We are using React, React Router and Flux for ultra responsive web apps
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

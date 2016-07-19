@@ -1,5 +1,6 @@
 var React = require('react');
 
+var AuthorApi = require('../../../../api/authorApi');
 var ManageAuthorForm = require('./ManageAuthorForm');
 
 var ManageAuthor = React.createClass({
@@ -16,6 +17,11 @@ var ManageAuthor = React.createClass({
         return this.setState({ author: this.state.author });
     },
 
+    saveAuthor: function(event){
+        event.preventDefault();
+        AuthorApi.saveAuthor(this.state.author);
+    },
+
     render: function(){
         return(
             <div className="container">
@@ -26,7 +32,7 @@ var ManageAuthor = React.createClass({
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <ManageAuthorForm author={this.state.author} setAuthorState={this.setAuthorState} />
+                        <ManageAuthorForm author={this.state.author} setAuthorState={this.setAuthorState} saveAuthor={this.saveAuthor} />
                     </div>
                 </div>
             </div>

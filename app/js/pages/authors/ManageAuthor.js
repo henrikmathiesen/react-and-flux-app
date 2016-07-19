@@ -3,6 +3,19 @@ var React = require('react');
 var ManageAuthorForm = require('./ManageAuthorForm');
 
 var ManageAuthor = React.createClass({
+    getInitialState: function(){
+        return {
+            author: { id: "", firstName: "", lastName: "" }
+        }
+    },
+
+    setAuthorState: function(event){
+        var field = event.target.name;
+        var value = event.target.value;
+        this.state.author[field] = value;
+        return this.setState({ author: this.state.author });
+    },
+
     render: function(){
         return(
             <div className="container">
@@ -13,7 +26,7 @@ var ManageAuthor = React.createClass({
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <ManageAuthorForm />
+                        <ManageAuthorForm author={this.state.author} setAuthorState={this.setAuthorState} />
                     </div>
                 </div>
             </div>

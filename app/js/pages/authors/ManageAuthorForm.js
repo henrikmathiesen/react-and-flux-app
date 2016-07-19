@@ -11,7 +11,8 @@ var ManageAuthorForm = React.createClass({
                         className="form-control"
                         placeholder="First Name"
                         ref="firstName"
-                        value="" />
+                        value={this.props.author.firstName} 
+                        onChange={this.props.setAuthorState} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="firstName">Last Name</label>
@@ -20,7 +21,8 @@ var ManageAuthorForm = React.createClass({
                         className="form-control"
                         placeholder="Last Name"
                         ref="lastName"
-                        value="" />
+                        value={this.props.author.lastName}
+                        onChange={this.props.setAuthorState} />
                 </div>
                 <button type="submit" className="btn btn-default btn-block">Submit</button>
             </form>

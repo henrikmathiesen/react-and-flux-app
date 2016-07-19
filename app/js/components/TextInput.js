@@ -27,7 +27,7 @@ var TextInput = React.createClass({
                     ref={this.props.name}
                     value={this.props.value} 
                     onChange={this.props.onChange} />
-                <div className={'text-danger ' + (hasError ? '' : 'hidden')}>{this.props.errorMessage}</div>
+                <div className={'text-danger ' + (hasError ? '' : 'hidden')}>{this.props.error}</div>
             </div>
         );
     }

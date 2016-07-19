@@ -22,6 +22,7 @@ var routes = (
             <Route path="info" component={Info}></Route>
 
             <Redirect from="about-us" to="about"></Redirect>
+            <Redirect from="about/*" to="about"></Redirect>
             <Route path="*" component={Route404}/>
         </Route>
     </Router>

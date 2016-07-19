@@ -1,16 +1,13 @@
 var React = require('react');
 
+var PageHeader = require('../../components/PageHeader');
 var LifeCycleMethodsTable = require('./LifeCycleMethodsTable');
 
 var Info = React.createClass({
     render: function(){
         return(
             <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <h1>Info</h1>
-                    </div>
-                </div>
+                <PageHeader title={'Info'} />
                 <div className="row">
                     <div className="col-md-12">
                         <h2>Methods in a React Class</h2>

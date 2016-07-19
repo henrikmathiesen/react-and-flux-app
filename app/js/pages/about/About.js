@@ -1,14 +1,12 @@
 var React = require('react');
 
+var PageHeader = require('../../components/PageHeader');
+
 var About = React.createClass({
     render: function () {
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <h1>About</h1>
-                    </div>
-                </div>
+                <PageHeader title={'About'} />
                 <div className="row">
                     <div className="col-md-12">
                         <p>

@@ -12,7 +12,7 @@ var HeaderSimpleRouting = React.createClass({
         activeClasses.home = (!activeClasses.about && !activeClasses.info && !activeClasses.authors) ? 'active' : ''; 
 
         return (
-            <nav className= "navbar navbar-default" >
+            <nav className="navbar navbar-default">
                 <div className="container-fluid">
                     <ul className="nav navbar-nav">
                         <li className={activeClasses.home}><a href="/#home">Home</a></li>
@@ -21,7 +21,7 @@ var HeaderSimpleRouting = React.createClass({
                         <li className={activeClasses.info}><a href="/#info">Info</a></li>
                     </ul>
                 </div>
-            </nav >
+            </nav>
         );
     }
 });

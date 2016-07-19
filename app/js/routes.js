@@ -10,6 +10,7 @@ var Home = require('./pages/Home');
 var Authors = require('./Pages/authors/Authors');
 var About = require('./Pages/about/About');
 var Info = require('./Pages/info/Info');
+var Route404 = require('./Pages/Route404');
 
 var routes = (
     <Router history={hashHistory}>
@@ -18,6 +19,7 @@ var routes = (
             <Route path="authors" component={Authors}></Route>
             <Route path="about" component={About}></Route>
             <Route path="info" component={Info}></Route>
+            <Route path="*" component={Route404}/>
         </Route>
     </Router>
 );

@@ -4,6 +4,7 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
+var Redirect = ReactRouter.Redirect;
 
 var Layout = require('./pages/Layout');
 var Home = require('./pages/Home');
@@ -19,6 +20,8 @@ var routes = (
             <Route path="authors" component={Authors}></Route>
             <Route path="about" component={About}></Route>
             <Route path="info" component={Info}></Route>
+
+            <Redirect from="about-us" to="about"></Redirect>
             <Route path="*" component={Route404}/>
         </Route>
     </Router>

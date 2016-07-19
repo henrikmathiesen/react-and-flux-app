@@ -16,17 +16,19 @@ var AuthorsList = React.createClass({
         };
 
         return(
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.authors.map(createAuthorsRow)}
-                </tbody>
-            </table>
+            <div className="col-md-12">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.authors.map(createAuthorsRow)}
+                    </tbody>
+                </table>
+            </div>
         );
      }
 });

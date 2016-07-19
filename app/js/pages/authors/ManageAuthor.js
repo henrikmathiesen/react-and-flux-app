@@ -4,6 +4,7 @@ var toastr = require('toastr');
 
 var AuthorApi = require('../../../../api/authorApi');
 var ManageAuthorForm = require('./ManageAuthorForm');
+var PageHeader = require('../../components/PageHeader');
 
 var ManageAuthor = React.createClass({
     getInitialState: function(){
@@ -11,6 +12,15 @@ var ManageAuthor = React.createClass({
             author: { id: "", firstName: "", lastName: "" },
             errors: { firstName: "", lastName: "" }
         }
+    },
+
+    componentWillMount: function(){
+        // Set state before rendering happens
+        var authorId = this.props.params.id;
+        if(!authorId) {  
+            return;
+        }
+        this.setState({ author: AuthorApi.getAuthorById(authorId) });
     },
 
     setAuthorState: function(event){
@@ -51,13 +61,11 @@ var ManageAuthor = React.createClass({
     },
 
     render: function(){
+        var title = this.props.params.id ? 'Edit Author' : 'Create Author';
+
         return(
             <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <h1>Manage Authors</h1>
-                    </div>
-                </div>
+                <PageHeader title={title} />
                 <div className="row">
                     <div className="col-md-6">
                         <ManageAuthorForm 

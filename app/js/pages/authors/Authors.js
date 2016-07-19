@@ -24,7 +24,7 @@ var Authors = React.createClass({
                         <h1>Authors</h1>
                     </div>
                     <div className="col-md-4 text-right">
-                        <Link to="manage-authors" className="btn btn-default btn-lg">Manage</Link>
+                        <Link to="manage-author" className="btn btn-default btn-lg">Add Author</Link>
                     </div>
                 </div>
                 <div className="row">

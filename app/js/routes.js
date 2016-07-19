@@ -21,7 +21,7 @@ var routes = (
         <Route path="/" component={Layout}>
             <IndexRoute component={Home}></IndexRoute>
             <Route path="authors" component={Authors}></Route>
-            <Route path="manage-authors" component={ManageAuthor}></Route>
+            <Route path="manage-author(/:id)" component={ManageAuthor}></Route>
             <Route path="about" component={About} onEnter={aboutRouteTransition.onEnter} onLeave={aboutRouteTransition.onLeave}></Route>
             <Route path="info" component={Info}></Route>
 

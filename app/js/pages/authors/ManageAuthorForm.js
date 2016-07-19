@@ -3,6 +3,13 @@ var React = require('react');
 var TextInput = require('../../components/TextInput');
 
 var ManageAuthorForm = React.createClass({
+    propTypes: {
+        author: React.PropTypes.object.isRequired,
+        setAuthorState: React.PropTypes.func.isRequired,
+        errors: React.PropTypes.object,
+        saveAuthor: React.PropTypes.func.isRequired
+    },
+
     render: function () {
         return(
             <form>

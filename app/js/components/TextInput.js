@@ -6,7 +6,7 @@ var TextInput = React.createClass({
         label: React.PropTypes.string.isRequired,
         value: React.PropTypes.string.isRequired,
         onChange: React.PropTypes.func.isRequired,
-        errorMessage: React.PropTypes.string
+        error: React.PropTypes.string
     },
 
     render: function () {

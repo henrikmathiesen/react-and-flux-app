@@ -10,6 +10,7 @@ var Header = React.createClass({
         return history.isActive(route, indexOnly) ? 'active' : '';
     },
 
+    // REFACTOR: http://stackoverflow.com/questions/34418254/is-there-a-way-using-react-router-to-set-an-active-class-on-the-wrapper-to-the-l
     render: function () {
         return(
             <nav className="navbar navbar-default">

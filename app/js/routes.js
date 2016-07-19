@@ -13,12 +13,14 @@ var About = require('./Pages/about/About');
 var Info = require('./Pages/info/Info');
 var Route404 = require('./Pages/Route404');
 
+var aboutRouteTransition = require('./Pages/about/aboutRouteTransition');
+
 var routes = (
     <Router history={hashHistory}>
         <Route path="/" component={Layout}>
             <IndexRoute component={Home}></IndexRoute>
             <Route path="authors" component={Authors}></Route>
-            <Route path="about" component={About}></Route>
+            <Route path="about" component={About} onEnter={aboutRouteTransition.onEnter} onLeave={aboutRouteTransition.onLeave}></Route>
             <Route path="info" component={Info}></Route>
 
             <Redirect from="about-us" to="about"></Redirect>

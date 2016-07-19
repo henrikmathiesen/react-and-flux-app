@@ -5,9 +5,9 @@ var IndexLink = ReactRouter.IndexLink;
 
 var Header = React.createClass({
 
-    getIsActiveClass: function(route, exCludeThisAsParent){
+    getIsActiveClass: function(route, indexOnly){
         var history = this.props.history;
-        return history.isActive(route, exCludeThisAsParent) ? 'active' : '';
+        return history.isActive(route, indexOnly) ? 'active' : '';
     },
 
     render: function () {

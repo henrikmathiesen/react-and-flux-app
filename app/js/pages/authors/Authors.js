@@ -11,14 +11,14 @@ var AuthorsList = require('./AuthorsList');
 var Authors = React.createClass({
     getInitialState: function () {
         return {
-            authors: []//authorStore.getAllAuthors()
+            authors: authorStore.getAllAuthors()
         }
     },
 
-    componentDidMount: function () {
-        console.log("Authors componentDidMount");
-        this.setState({ authors: authorStore.getAllAuthors() });
-    },
+    // componentDidMount: function () {
+    //     console.log("Authors componentDidMount");
+    //     this.setState({ authors: authorStore.getAllAuthors() });
+    // },
 
     render: function () {
         console.log("Authors Render");

@@ -46,6 +46,9 @@ Dispatcher.register(function (action) {
             _authors.push(action.author);
             authorStore.emitChange();
             break;
+        case actionTypes.UPDATE_AUTHOR:
+            var existingAuthor = _.find(_authors, { id: action.author.id });
+            break;
         default:
             // no option
             break;

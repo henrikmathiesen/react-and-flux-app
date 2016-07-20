@@ -16,7 +16,7 @@ var ManageAuthor = React.createClass({
     },
 
     componentWillMount: function(){
-        // Set state before rendering happens
+        // Set state before rendering happens: if no id then we are creating a new author, if id then we edit an existing author so we go get it
         var authorId = this.props.params.id;
         if(!authorId) {  
             return;
@@ -56,7 +56,13 @@ var ManageAuthor = React.createClass({
             return;
         }
 
-        authorActions.createAuthor(this.state.author);
+        if(this.props.params.id) {
+            authorActions.upDateAuthor(this.state.author);
+        }
+        else {
+            authorActions.createAuthor(this.state.author);
+        }
+
         toastr.success("Author Saved");
         hashHistory.push('/authors');
     },

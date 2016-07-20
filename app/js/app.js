@@ -1,8 +1,11 @@
 $ = jQuery = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
+var initializeActions = require('./flux/initializeActions');
 
 var routes = require('./routes');
+
+initializeActions.initApp();
 
 ReactDOM.render(routes, document.getElementById('app'));
 

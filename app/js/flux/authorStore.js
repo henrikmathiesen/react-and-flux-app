@@ -48,7 +48,16 @@ Dispatcher.register(function (action) {
             break;
         case actionTypes.UPDATE_AUTHOR:
             var existingAuthor = _.find(_authors, { id: action.author.id });
+            var existingAuthorIndex = _.indexOf(_authors, existingAuthor);
+            _authors.splice(existingAuthorIndex, 1, action.author);
+            authorStore.emitChange();
             break;
+        case actionTypes.DELETE_AUTHOR:
+            _.remove(_authors, function (author) {
+                return action.authorId === author.id;
+            });
+            authorStore.emitChange();
+            break;            
         default:
             // no option
             break;

@@ -1,20 +1,28 @@
 var React = require('react');
 var Link = require('react-router').Link;
 
+var authorActions = require('../../flux/authorActions');
+var toastr = require('toastr');
+
 var AuthorsList = React.createClass({
     propTypes: {
         authors: React.PropTypes.array.isRequired
     },
 
-    render: function () {
+    deleteAuthor: function (id) {
+        authorActions.deleteAuthor(id);
+        toastr.success("Author Deleted");
+    },
 
-        var authorsTemp = this.props.authors;
+    render: function () {
+        var that = this;
 
         var createAuthorsRow = function (author) {
             return (
                 <tr key={author.id}>
                     <td><Link to={'manage-author/' + author.id}>{author.id}</Link></td>
                     <td>{author.firstName} {author.lastName}</td>
+                    <td><button onClick={function(){ that.deleteAuthor(author.id) }} className="btn btn-xs btn-danger">Delete</button></td>
                 </tr>
             );
         };
@@ -26,6 +34,7 @@ var AuthorsList = React.createClass({
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Admin</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -20,8 +20,19 @@ var Authors = React.createClass({
     //     this.setState({ authors: authorStore.getAllAuthors() });
     // },
 
+    componentWillMount: function () {
+        authorStore.addChangeListener(this.onChange);
+    },
+
+    componentWillUnmount: function () {
+        authorStore.removeChangeListener(this.onChange);
+    },
+
+    onChange: function () {
+        this.setState({ authors: authorStore.getAllAuthors() });
+    },
+
     render: function () {
-        console.log("Authors Render");
         return (
             <div className="container">
                 <div className="row">

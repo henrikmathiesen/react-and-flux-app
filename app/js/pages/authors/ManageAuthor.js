@@ -2,7 +2,8 @@ var React = require('react');
 var hashHistory = require('react-router').hashHistory;
 var toastr = require('toastr');
 
-var AuthorApi = require('../../../../api/authorApi');
+var authorActions = require('../../flux/authorActions');
+var authorStore = require('../../flux/authorStore');
 var ManageAuthorForm = require('./ManageAuthorForm');
 var PageHeader = require('../../components/PageHeader');
 
@@ -20,7 +21,7 @@ var ManageAuthor = React.createClass({
         if(!authorId) {  
             return;
         }
-        this.setState({ author: AuthorApi.getAuthorById(authorId) });
+        this.setState({ author: authorStore.getAuthorById(authorId) });
     },
 
     setAuthorState: function(event){
@@ -55,7 +56,7 @@ var ManageAuthor = React.createClass({
             return;
         }
 
-        AuthorApi.saveAuthor(this.state.author);
+        authorActions.createAuthor(this.state.author);
         toastr.success("Author Saved");
         hashHistory.push('/authors');
     },

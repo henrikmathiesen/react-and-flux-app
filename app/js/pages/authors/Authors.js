@@ -2,21 +2,26 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 
-var AuthorApi = require('../../../../api/authorApi');
+var authorActions = require('../../flux/authorActions');
+var authorStore = require('../../flux/authorStore');
 var AuthorsList = require('./AuthorsList');
 
+//var authorApi = require('../../../../api/authorApi');
+
 var Authors = React.createClass({
-    getInitialState: function(){
+    getInitialState: function () {
         return {
-            authors: []
+            authors: []//authorStore.getAllAuthors()
         }
     },
 
-    componentDidMount: function(){
-        this.setState({ authors: AuthorApi.getAllAuthors() });
+    componentDidMount: function () {
+        console.log("Authors componentDidMount");
+        this.setState({ authors: authorStore.getAllAuthors() });
     },
 
-    render: function(){
+    render: function () {
+        console.log("Authors Render");
         return (
             <div className="container">
                 <div className="row">

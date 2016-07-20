@@ -6,9 +6,12 @@ var AuthorsList = React.createClass({
         authors: React.PropTypes.array.isRequired
     },
 
-     render: function(){
-        var createAuthorsRow = function(author){
-            return(
+    render: function () {
+
+        var authorsTemp = this.props.authors;
+
+        var createAuthorsRow = function (author) {
+            return (
                 <tr key={author.id}>
                     <td><Link to={'manage-author/' + author.id}>{author.id}</Link></td>
                     <td>{author.firstName} {author.lastName}</td>
@@ -16,7 +19,7 @@ var AuthorsList = React.createClass({
             );
         };
 
-        return(
+        return (
             <div className="col-md-12">
                 <table className="table">
                     <thead>
@@ -26,12 +29,12 @@ var AuthorsList = React.createClass({
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.authors.map(createAuthorsRow)}
+                        {this.props.authors.map(createAuthorsRow) }
                     </tbody>
                 </table>
             </div>
         );
-     }
+    }
 });
 
 module.exports = AuthorsList;

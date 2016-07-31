@@ -51,7 +51,10 @@ gulp.task('es-lint', function () {
 });
 
 gulp.task('js', ['es-lint'], function () {
-    return browserify(config.paths.mainJS, { debug: !isProduction }) // this will not set environment flag for react, check into that ... It seams it runs in prod mode since its not warning for props that do not match propTypes.
+    // debug = true     -- will bundle, will not minify, will create sourcemap back to individual files
+    // debug = false    -- will bundle, will minify some, will not create sourcemap, it also seems like it sets React env flag because its not warning for props that do not match propTypes
+    // Uglify will minify more
+    return browserify(config.paths.mainJS, { debug: !isProduction })
         .transform(reactify)
         .bundle()
         .on('error', console.error.bind(console))

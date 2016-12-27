@@ -27,7 +27,7 @@ var config = {
         html: './app/*.html',
         imagesFavIcon: './app/img/favicon.ico',
         mainJS: './app/js/app.js',
-        js: './app/js/**/*.js',
+        js: ['./api/*.js', './app/js/**/*.js'],
         mainLess: './app/less/app.less',
         less: './app/less/**/*.less',
         bld: './bld'

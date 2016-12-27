@@ -1,7 +1,7 @@
 module.exports = {
     authors: [
         {
-            id: "Cory House",
+            id: "cory-house",
             firstName: "Cory",
             lastName: "House"
         },

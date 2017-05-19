@@ -2,6 +2,7 @@ var gulp = require('gulp');
 
 var connect = require('gulp-connect');
 var browserify = require('browserify');
+var envify = require('gulp-envify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -19,6 +20,9 @@ var minifyCss = require('gulp-minify-css');
 var sourceMaps = require('gulp-sourcemaps');
 
 var isProduction = (argv.prod) ? (true) : (false);  // gulp --prod
+var environment = {
+  NODE_ENV: isProduction ? 'production' : 'development'
+};
 
 var config = {
     port: 1337,
@@ -53,6 +57,9 @@ gulp.task('es-lint', function () {
 gulp.task('js', ['es-lint'], function () {
     // debug = true     -- will bundle, will not minify, will create sourcemap back to individual files
     // debug = false    -- will bundle, will minify some, will not create sourcemap, it also seems like it sets React env flag because its not warning for props that do not match propTypes
+    // actually process.env.NODE_ENV is undefined, so process.env.NODE_ENV !== 'production' is true, which means debug code runs
+    // lets test setting it here, process.env.NODE_ENV = isProduction ? 'production' : 'development'; , it works in here but stil undefined in source code
+    // This works 'https://github.com/tomashanacek/gulp-envify' , NODE_ENV is set to a string , read more here 'https://www.npmjs.com/package/envify'
     // Uglify will minify more
     return browserify(config.paths.mainJS, { debug: !isProduction })
         .transform(reactify)
@@ -60,9 +67,11 @@ gulp.task('js', ['es-lint'], function () {
         .on('error', console.error.bind(console))
         .pipe(source('app.js'))
         .pipe(buffer())
+
+        .pipe(envify(environment))
         
-        .pipe(gulpif(isProduction, stripDebug()))
-        .pipe(gulpif(isProduction, uglifyJs()))
+        //.pipe(gulpif(isProduction, stripDebug()))
+        //.pipe(gulpif(isProduction, uglifyJs()))
         .pipe(gulp.dest(config.paths.bld));
 });
 

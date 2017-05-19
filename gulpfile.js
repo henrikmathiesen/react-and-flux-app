@@ -70,8 +70,8 @@ gulp.task('js', ['es-lint'], function () {
 
         .pipe(envify(environment))
         
-        //.pipe(gulpif(isProduction, stripDebug()))
-        //.pipe(gulpif(isProduction, uglifyJs()))
+        .pipe(gulpif(isProduction, stripDebug()))
+        .pipe(gulpif(isProduction, uglifyJs()))
         .pipe(gulp.dest(config.paths.bld));
 });
 

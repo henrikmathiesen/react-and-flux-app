@@ -21,7 +21,7 @@ var sourceMaps = require('gulp-sourcemaps');
 
 var isProduction = (argv.prod) ? (true) : (false);  // gulp --prod
 var environment = {
-  NODE_ENV: isProduction ? 'production' : 'development'
+    NODE_ENV: isProduction ? 'production' : 'development'
 };
 
 var config = {
@@ -37,14 +37,6 @@ var config = {
         bld: './bld'
     }
 };
-
-gulp.task('connect', function () {
-    connect.server({
-        root: ['bld'],
-        port: config.port,
-        base: config.devBaseUrl
-    })
-});
 
 gulp.task('es-lint', function () {
     return gulp
@@ -69,7 +61,7 @@ gulp.task('js', ['es-lint'], function () {
         .pipe(buffer())
 
         .pipe(envify(environment))
-        
+
         .pipe(gulpif(isProduction, stripDebug()))
         .pipe(gulpif(isProduction, uglifyJs()))
         .pipe(gulp.dest(config.paths.bld));
@@ -107,5 +99,10 @@ gulp.task('watcher', function () {
 });
 
 gulp.task('build', ['html', 'js', 'less', 'images']);
-gulp.task('watch', ['build', 'watcher']);
-gulp.task('default', ['watch', 'connect']);
+gulp.task('default', ['build', 'watcher'], function () {
+    connect.server({
+        root: ['bld'],
+        port: config.port,
+        base: config.devBaseUrl
+    })
+});

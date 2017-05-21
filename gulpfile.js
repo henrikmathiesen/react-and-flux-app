@@ -49,7 +49,7 @@ gulp.task('es-lint', function () {
 gulp.task('js', ['es-lint'], function () {
     // debug = true     -- will bundle, will not minify, will create sourcemap back to individual files
     // debug = false    -- will bundle, will minify some, will not create sourcemap, it also seems like it sets React env flag because its not warning for props that do not match propTypes
-    // actually process.env.NODE_ENV is undefined, so process.env.NODE_ENV !== 'production' is true, which means debug code runs, no debug code does not run, maybe it is shimmed in some way
+    // actually process.env.NODE_ENV is undefined, so process.env.NODE_ENV !== 'production' is true, which means debug code runs -- no debug code does not run, maybe it is shimmed in some way
     // lets test setting it here, process.env.NODE_ENV = isProduction ? 'production' : 'development'; , it works in here but stil undefined(?) in source code
     // This works 'https://github.com/tomashanacek/gulp-envify' , NODE_ENV is set to a string , read more here 'https://www.npmjs.com/package/envify'
     // Uglify will minify more
